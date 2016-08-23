@@ -1,0 +1,262 @@
+1 0:                                ; Game of Life program
+2 0:                                ; Conway's Game of Life written in Silly Assembly Language
+3 0:                                
+4 0:                                
+5 0:                                
+6 0:                                ; Notes:
+7 0:                                ; r0 - generation number
+8 0:                                
+9 0:                                .start begin
+10 0:  0 0 0 0 0 0 0 0 0 0 0 0 0 0  cells:      .allocate #196
+11 196:  0 0 0 0 0 0 0 0 0 0 0 0 0  newCells:   .allocate #196
+12 392:  12 71 101 110 101 114 97 1 genMess:    .string "Generation #"
+13 405:  104 69 110 116 101 114 32  setMess:    .string "Enter a 'd' to run default colony or enter 'a r c' to set a cell alive. Enter an 's' to start evolution."
+14 510:  1                          ALIVE:      .integer #1
+15 511:  0                          DEAD:       .integer #0
+16 512:  14                         size:       .integer #14 ;including border of death
+17 513:  12                         realSize:   .integer #12
+18 514:                             
+19 514:  55 405                     getAliveCells: outs setMess
+20 516:  50                         readc
+21 517:                             
+22 517:  5 5 3                      begin: movir #5 r3
+23 520:  5 5 4                      movir #5 r4
+24 523:  39 620                     jsr setCellAlive
+25 525:  5 5 3                      movir #5 r3
+26 528:  5 6 4                      movir #6 r4
+27 531:  39 620                     jsr setCellAlive
+28 533:  5 5 3                      movir #5 r3
+29 536:  5 7 4                      movir #7 r4
+30 539:  39 620                     jsr setCellAlive
+31 541:  5 4 3                      movir #4 r3
+32 544:  5 7 4                      movir #7 r4
+33 547:  39 620                     jsr setCellAlive
+34 549:  5 3 3                      movir #3 r3
+35 552:  5 6 4                      movir #6 r4
+36 555:  39 620                     jsr setCellAlive
+37 557:  1 6                        clrr r6
+38 559:  39 573                     for01: jsr printColony
+39 561:  39 638                     jsr evolve
+40 563:  12 1 6                     rof01: addir #1 r6
+41 566:  33 15 6                    cmpir #15 r6
+42 569:  38 560                     jmpp for01
+43 571:  0                          halt
+44 572:                             
+45 572:                             ;print prints the colony
+46 572:                             ;uses r3 and r4 for counting
+47 572:  55 392                     printColony: outs genMess
+48 574:  49 0                       printi r0 ;print gen number
+49 576:  44 10                      outci #10 ;print newline
+50 578:  1 3                        clrr r3 ;holds row count
+51 580:                             ;clrr r4 ;holds col count
+52 580:  1 4                        forR: clrr r4
+53 582:                             forC:
+54 582:  39 863                     jsr index
+55 584:  9 2 2                      movxr r2 r2
+56 587:  35 511 2                   cmpmr DEAD r2
+57 590:  36 597                     jmpn printAlive
+58 592:  44 46                      printDead: outci #46 ; print dead symbol
+59 594:  28 599                     jmp rofC
+60 596:  44 42                      printAlive: outci #42 ;ascii for *
+61 598:  12 1 4                     rofC: addir #1 r4
+62 601:  35 513 4                   cmpmr realSize r4
+63 604:  38 583                     jmpp forC
+64 606:  44 10                      outci #10 ;print newline
+65 608:  12 1 3                     rofR: addir #1 r3
+66 611:  35 513 3                   cmpmr realSize r3
+67 614:  38 581                     jmpp forR
+68 616:  44 10                      outci #10 ;print newline
+69 618:  40                         ret
+70 619:                             
+71 619:                             ;sets a cell in r3,r4 alive
+72 619:  39 863                     setCellAlive: jsr index
+73 621:  8 510 5                    movmr ALIVE r5
+74 624:  53 5 2                     movrx r5 r2
+75 627:  40                         ret
+76 628:                             
+77 628:                             ;sets a cell in r3,r4 dead
+78 628:  39 863                     setCellDead: jsr index
+79 630:  8 511 5                    movmr DEAD r5
+80 633:  53 5 2                     movrx r5 r2
+81 636:  40                         ret
+82 637:                             
+83 637:                             ;evolves colony.
+84 637:                             ;r3,r4 used for counting
+85 637:  1 3                        evolve: clrr r3 ;holds row count
+86 639:  1 4                        forRE: clrr r4 ;holds col count
+87 641:                             forCE:
+88 641:  39 863                     jsr index
+89 643:  6 2 6                      movrr r2 r6 ;saves location in r6 before it is erased in r2
+90 646:  9 2 2                      movxr r2 r2
+91 649:  6 2 1                      movrr r2 r1 ;puts current state int r1
+92 652:  39 704                     jsr countNeighbors
+93 654:  39 685                     jsr applyRules
+94 656:  12 196 6                   addir #196 r6
+95 659:  53 1 6                     movrx r1 r6
+96 662:  12 1 4                     rofCE: addir #1 r4
+97 665:  35 513 4                   cmpmr realSize r4
+98 668:  38 642                     jmpp forCE
+99 670:  12 1 3                     rofRE: addir #1 r3
+100 673:  35 513 3                  cmpmr realSize r3
+101 676:  38 640                    jmpp forRE
+102 678:  39 842                    jsr switchCells
+103 680:  12 1 0                    addir #1 r0
+104 683:  40                        ret
+105 684:                            
+106 684:                            ;applies rules to each cell
+107 684:                            ;r1 - current cell state
+108 684:                            ;r2 - number of neighbors
+109 684:                            ;puts new state in r1
+110 684:  33 2 2                    applyRules: cmpir #2 r2
+111 687:  37 703                    jmpz same
+112 689:  33 3 2                    cmpir #3 r2
+113 692:  37 699                    jmpz alive
+114 694:  8 511 1                   dead: movmr DEAD r1
+115 697:  40                        ret
+116 698:  8 510 1                   alive: movmr ALIVE r1
+117 701:  40                        ret
+118 702:  40                        same: ret
+119 703:                            
+120 703:                            ;counts neighbors of cell r3,r4
+121 703:                            ;stores number of nieghbors in r2
+122 703:  1 2                       countNeighbors: clrr r2
+123 705:  1 7                       clrr r7 ;r7 holds count temporarily
+124 707:  6 3 5                     movrr r3 r5 ;r5 holds row
+125 710:  6 4 6                     movrr r4 r6 ;r6 holds col
+126 713:                            
+127 713:                            ;Up-left
+128 713:  16 1 3                    subir #1 r3
+129 716:  16 1 4                    subir #1 r4
+130 719:  39 863                    jsr index
+131 721:  15 2 7                    addxr r2 r7
+132 724:  6 5 3                     movrr r5 r3
+133 727:  6 6 4                     movrr r6 r4
+134 730:                            
+135 730:                            ;Up
+136 730:  16 1 3                    subir #1 r3
+137 733:  39 863                    jsr index
+138 735:  15 2 7                    addxr r2 r7
+139 738:  6 5 3                     movrr r5 r3
+140 741:  6 6 4                     movrr r6 r4
+141 744:                            
+142 744:                            ;Up-right
+143 744:  16 1 3                    subir #1 r3
+144 747:  12 1 4                    addir #1 r4
+145 750:  39 863                    jsr index
+146 752:  15 2 7                    addxr r2 r7
+147 755:  6 5 3                     movrr r5 r3
+148 758:  6 6 4                     movrr r6 r4
+149 761:                            
+150 761:                            ;left
+151 761:  16 1 4                    subir #1 r4
+152 764:  39 863                    jsr index
+153 766:  15 2 7                    addxr r2 r7
+154 769:  6 5 3                     movrr r5 r3
+155 772:  6 6 4                     movrr r6 r4
+156 775:                            
+157 775:                            ;right
+158 775:  12 1 4                    addir #1 r4
+159 778:  39 863                    jsr index
+160 780:  15 2 7                    addxr r2 r7
+161 783:  6 5 3                     movrr r5 r3
+162 786:  6 6 4                     movrr r6 r4
+163 789:                            
+164 789:                            ;down-left
+165 789:  12 1 3                    addir #1 r3
+166 792:  16 1 4                    subir #1 r4
+167 795:  39 863                    jsr index
+168 797:  15 2 7                    addxr r2 r7
+169 800:  6 5 3                     movrr r5 r3
+170 803:  6 6 4                     movrr r6 r4
+171 806:                            
+172 806:                            ;down
+173 806:  12 1 3                    addir #1 r3
+174 809:  39 863                    jsr index
+175 811:  15 2 7                    addxr r2 r7
+176 814:  6 5 3                     movrr r5 r3
+177 817:  6 6 4                     movrr r6 r4
+178 820:                            
+179 820:                            ;down-right
+180 820:  12 1 3                    addir #1 r3
+181 823:  12 1 4                    addir #1 r4
+182 826:  39 863                    jsr index
+183 828:  15 2 7                    addxr r2 r7
+184 831:  6 5 3                     movrr r5 r3
+185 834:  6 6 4                     movrr r6 r4
+186 837:                            
+187 837:  6 7 2                     movrr r7 r2
+188 840:  40                        ret
+189 841:                            
+190 841:  5 196 6                   switchCells: movir #196 r6
+191 844:  5 0 7                     movir #0 r7
+192 847:  54 6 7                    fors: movxx r6 r7
+193 850:  12 1 6                    rofs: addir #1 r6
+194 853:  12 1 7                    addir #1 r7
+195 856:  33 196 7                  cmpir #196 r7
+196 859:  38 848                    jmpp fors
+197 861:  40                        ret
+198 862:                            
+199 862:                            ;gets index of cell r3,r4
+200 862:                            ;places result in r2
+201 862:  6 3 5                     index: movrr r3 r5
+202 865:  6 4 6                     movrr r4 r6
+203 868:  12 1 5                    addir #1 r5
+204 871:  12 1 6                    addir #1 r6
+205 874:  22 512 5                  mulmr size r5
+206 877:  13 6 5                    addrr r6 r5
+207 880:  6 5 2                     movrr r5 r2
+208 883:  40                        ret
+209 884:                            
+210 884:                            ;gets index of cell r3,r4 for newCells
+211 884:                            ;places result in r2
+212 884:  6 3 5                     newIndex: movrr r3 r5
+213 887:  6 4 6                     movrr r4 r6
+214 890:  12 1 5                    addir #1 r5
+215 893:  12 1 6                    addir #1 r6
+216 896:  22 512 5                  mulmr size r5
+217 899:  13 6 5                    addrr r6 r5
+218 902:  6 5 2                     movrr r5 r2
+219 905:  12 196 2                  addir #196 r2
+220 908:  40                        ret
+221 909:                            
+222 909:                            .end
+
+
+Symbols  Table
+0       cells
+196     newCells
+392     genMess
+405     setMess
+510     ALIVE
+511     DEAD
+512     size
+513     realSize
+514     getAliveCells
+518     begin
+560     for01
+564     rof01
+573     printColony
+581     forR
+583     forC
+593     printDead
+597     printAlive
+599     rofC
+609     rofR
+620     setCellAlive
+629     setCellDead
+638     evolve
+640     forRE
+642     forCE
+663     rofCE
+671     rofRE
+685     applyRules
+695     dead
+699     alive
+703     same
+704     countNeighbors
+842     switchCells
+848     fors
+851     rofs
+863     index
+885     newIndex
+Number of Assembly Errors: 1

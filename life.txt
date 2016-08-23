@@ -1,0 +1,222 @@
+; Game of Life program
+; Conway's Game of Life written in Silly Assembly Language
+
+
+
+; Notes:
+; r0 - generation number
+
+    .start begin
+cells:      .allocate #196
+newCells:   .allocate #196
+genMess:    .string "Generation #"
+setMess:    .string "Enter a 'd' to run default colony or enter 'a r c' to set a cell alive. Enter an 's' to start evolution."
+ALIVE:      .integer #1
+DEAD:       .integer #0
+size:       .integer #14 ;including border of death
+realSize:   .integer #12
+
+getAliveCells: outs setMess
+               readc
+
+begin: movir #5 r3
+       movir #5 r4
+       jsr setCellAlive
+       movir #5 r3
+       movir #6 r4
+       jsr setCellAlive
+       movir #5 r3
+       movir #7 r4
+       jsr setCellAlive
+       movir #4 r3
+       movir #7 r4
+       jsr setCellAlive
+       movir #3 r3
+       movir #6 r4
+       jsr setCellAlive
+       clrr r6
+for01: jsr printColony
+       jsr evolve
+rof01: addir #1 r6
+       cmpir #15 r6
+       jmpp for01
+       halt
+    
+;print prints the colony
+;uses r3 and r4 for counting
+printColony: outs genMess
+             printi r0 ;print gen number
+             outci #10 ;print newline
+             clrr r3 ;holds row count
+             ;clrr r4 ;holds col count
+             forR: clrr r4
+                forC:
+                    jsr index
+                    movxr r2 r2
+                    cmpmr DEAD r2
+                    jmpn printAlive
+                    printDead: outci #46 ; print dead symbol
+                    jmp rofC
+                    printAlive: outci #42 ;ascii for *
+                rofC: addir #1 r4
+                      cmpmr realSize r4
+                      jmpp forC
+                      outci #10 ;print newline
+             rofR: addir #1 r3
+                   cmpmr realSize r3
+                   jmpp forR
+                   outci #10 ;print newline
+                   ret
+
+;sets a cell in r3,r4 alive
+setCellAlive: jsr index
+              movmr ALIVE r5
+              movrx r5 r2
+              ret
+              
+;sets a cell in r3,r4 dead
+setCellDead: jsr index
+              movmr DEAD r5
+              movrx r5 r2
+              ret
+
+;evolves colony.
+;r3,r4 used for counting
+evolve: clrr r3 ;holds row count
+             forRE: clrr r4 ;holds col count
+                forCE:
+                    jsr index
+                    movrr r2 r6 ;saves location in r6 before it is erased in r2
+                    movxr r2 r2 
+                    movrr r2 r1 ;puts current state int r1
+                    jsr countNeighbors
+                    jsr applyRules
+                    addir #196 r6
+                    movrx r1 r6
+                rofCE: addir #1 r4
+                      cmpmr realSize r4
+                      jmpp forCE
+             rofRE: addir #1 r3
+                   cmpmr realSize r3
+                   jmpp forRE
+                   jsr switchCells
+                   addir #1 r0
+                   ret
+
+;applies rules to each cell
+;r1 - current cell state
+;r2 - number of neighbors
+;puts new state in r1
+applyRules: cmpir #2 r2
+            jmpz same
+            cmpir #3 r2
+            jmpz alive
+            dead: movmr DEAD r1
+                  ret
+            alive: movmr ALIVE r1
+                   ret
+            same: ret
+
+;counts neighbors of cell r3,r4
+;stores number of nieghbors in r2
+countNeighbors: clrr r2
+                clrr r7 ;r7 holds count temporarily
+                movrr r3 r5 ;r5 holds row
+                movrr r4 r6 ;r6 holds col
+
+                ;Up-left
+                subir #1 r3
+                subir #1 r4
+                jsr index
+                addxr r2 r7
+                movrr r5 r3
+                movrr r6 r4
+
+                ;Up
+                subir #1 r3
+                jsr index
+                addxr r2 r7
+                movrr r5 r3
+                movrr r6 r4
+
+                ;Up-right
+                subir #1 r3
+                addir #1 r4
+                jsr index
+                addxr r2 r7
+                movrr r5 r3
+                movrr r6 r4
+
+                ;left
+                subir #1 r4
+                jsr index
+                addxr r2 r7
+                movrr r5 r3
+                movrr r6 r4
+
+                ;right
+                addir #1 r4
+                jsr index
+                addxr r2 r7
+                movrr r5 r3
+                movrr r6 r4
+
+                ;down-left
+                addir #1 r3
+                subir #1 r4
+                jsr index
+                addxr r2 r7
+                movrr r5 r3
+                movrr r6 r4
+
+                ;down
+                addir #1 r3
+                jsr index
+                addxr r2 r7
+                movrr r5 r3
+                movrr r6 r4
+                
+                ;down-right
+                addir #1 r3
+                addir #1 r4
+                jsr index
+                addxr r2 r7
+                movrr r5 r3
+                movrr r6 r4
+                
+                movrr r7 r2
+                ret
+     
+switchCells: movir #196 r6
+             movir #0 r7
+             fors: movxx r6 r7
+             rofs: addir #1 r6
+                   addir #1 r7
+                   cmpir #196 r7
+                   jmpp fors
+             ret
+
+;gets index of cell r3,r4
+;places result in r2    
+index: movrr r3 r5
+       movrr r4 r6
+       addir #1 r5
+       addir #1 r6
+       mulmr size r5
+       addrr r6 r5
+       movrr r5 r2
+       ret
+        
+;gets index of cell r3,r4 for newCells
+;places result in r2    
+newIndex: movrr r3 r5
+       movrr r4 r6
+       addir #1 r5
+       addir #1 r6
+       mulmr size r5
+       addrr r6 r5
+       movrr r5 r2
+       addir #196 r2
+       ret
+
+.end

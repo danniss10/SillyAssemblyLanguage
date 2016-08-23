@@ -1,0 +1,49 @@
+;Factorial program
+;Computes the factorial of 5, 6, 7
+
+.start begin
+
+mess: .String "Factorial Program"
+mess1: .String "The factorial of "
+mess2: .String " is..."
+
+begin: outs mess
+       outci #10
+
+       movir #5 r1
+       jsr fact
+       jsr outAns
+
+
+       movir #6 r1
+       jsr fact
+       jsr outAns
+
+       movir #7 r1
+       jsr fact
+       jsr outAns
+
+       halt
+
+       ; outAns outputs the answer to a factorial problem
+       ; r1 - the number to find the factorial
+       ; r0 - the factorial of r1
+outAns: outs mess1
+        printi r1
+        outs mess2
+        printi r0
+        outci #10
+        ret
+
+       ; fact finds the factorial of an integer
+       ; r1 - number to find the factorial of
+       ; r0 - return value - factorial of r1
+fact:  movrr r1 r2
+       movir #1 r3
+for02: mulrr r2 r3
+rof02: sojnz r2 for02
+       movrr r3 r0
+       ret
+
+       .end
+       

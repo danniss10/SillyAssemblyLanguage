@@ -1,0 +1,327 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="2"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="stackLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="stack" pref="87" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="pcLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="r1label" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="r2label" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="r3label" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="r9label" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="r4label" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="r5label" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="r6label" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="r7label" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="r8label" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="r0label" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="pc" pref="105" max="32767" attributes="0"/>
+                          <Component id="r0" alignment="0" pref="105" max="32767" attributes="0"/>
+                          <Component id="r1" alignment="0" pref="105" max="32767" attributes="0"/>
+                          <Component id="r2" alignment="0" pref="105" max="32767" attributes="0"/>
+                          <Component id="r3" alignment="0" pref="105" max="32767" attributes="0"/>
+                          <Component id="r4" alignment="0" pref="105" max="32767" attributes="0"/>
+                          <Component id="r5" alignment="0" pref="105" max="32767" attributes="0"/>
+                          <Component id="r6" alignment="0" pref="105" max="32767" attributes="0"/>
+                          <Component id="r7" alignment="0" pref="105" max="32767" attributes="0"/>
+                          <Component id="r8" pref="105" max="32767" attributes="0"/>
+                          <Component id="r9" alignment="0" pref="105" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="cmprLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="cmpr" pref="89" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="pc" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="pcLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="r0" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="r0label" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="r1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="r1label" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="8" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="r2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="r2label" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="8" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="r3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="r3label" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="8" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="r4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="r4label" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="8" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="r5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="r5label" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="8" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="r6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="r6label" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="8" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="r7" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="r7label" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="8" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="r8" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="r8label" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="8" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="r9" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="r9label" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="stack" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="stackLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="cmpr" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmprLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JTextField" name="r0">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Register"/>
+        <Property name="actionCommand" type="java.lang.String" value="&lt;Not Set&gt;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="r0ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="r1">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Register"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="r1ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="r2">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Register"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="r2ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="r3">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Register"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="r3ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="r4">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Register"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="r4ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="r5">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Register"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="r5ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="r6">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Register"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="r6ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="r7">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Register"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="r7ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="r8">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Register"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="r8ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="r9">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Register"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="r9ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="r0label">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="r0:"/>
+        <Property name="toolTipText" type="java.lang.String" value="Register"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="r1label">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="r1:"/>
+        <Property name="toolTipText" type="java.lang.String" value="Register"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="r2label">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="r2:"/>
+        <Property name="toolTipText" type="java.lang.String" value="Register"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="r3label">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="r3:"/>
+        <Property name="toolTipText" type="java.lang.String" value="Register"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="r4label">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="r4:"/>
+        <Property name="toolTipText" type="java.lang.String" value="Register"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="r5label">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="r5:"/>
+        <Property name="toolTipText" type="java.lang.String" value="Register"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="r6label">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="r6:"/>
+        <Property name="toolTipText" type="java.lang.String" value="Register"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="r7label">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="r7:"/>
+        <Property name="toolTipText" type="java.lang.String" value="Register"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="r8label">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="r8:"/>
+        <Property name="toolTipText" type="java.lang.String" value="Register"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="r9label">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="r9:"/>
+        <Property name="toolTipText" type="java.lang.String" value="Register"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="stack">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Stack Register: 0 - OK, 1 - FULL, 2 - EMPTY"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stackActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="stackLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Stack:"/>
+        <Property name="toolTipText" type="java.lang.String" value="Stack Register: 0 - OK, 1 - FULL, 2 - EMPTY"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="cmprLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cmpr:"/>
+        <Property name="toolTipText" type="java.lang.String" value="Compare Register"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="cmpr">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Compare Register"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmprActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="pcLabel">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="13" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="PC:"/>
+        <Property name="toolTipText" type="java.lang.String" value="Program Counter"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="pc">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Program Counter"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pcActionPerformed"/>
+      </Events>
+    </Component>
+  </SubComponents>
+</Form>

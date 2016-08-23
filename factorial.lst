@@ -1,0 +1,60 @@
+0 0:                                ;Factorial program
+1 0:                                ;Computes the factorial of 5, 6, 7
+2 0:                                
+3 0:                                .start begin
+4 0:                                
+5 0:  17 70 97 99 116 111 114 105 9 mess: .String "Factorial Program"
+6 18:  17 84 104 101 32 102 97 99 1 mess1: .String "The factorial of "
+7 36:  6 32 105 115 46 46 46        mess2: .String " is..."
+8 43:                               
+9 43:  55 0                         begin: outs mess
+10 45:  44 10                       outci #10
+11 47:                              
+12 47:  5 5 1                       movir #5 r1
+13 50:  39 80                       jsr fact
+14 52:  39 69                       jsr outAns
+15 54:                              
+16 54:                              
+17 54:  5 6 1                       movir #6 r1
+18 57:  39 80                       jsr fact
+19 59:  39 69                       jsr outAns
+20 61:                              
+21 61:  5 7 1                       movir #7 r1
+22 64:  39 80                       jsr fact
+23 66:  39 69                       jsr outAns
+24 68:                              
+25 68:  0                           halt
+26 69:                              
+27 69:                              ; outAns outputs the answer to a factorial problem
+28 69:                              ; r1 - the number to find the factorial
+29 69:                              ; r0 - the factorial of r1
+30 69:  55 18                       outAns: outs mess1
+31 71:  49 1                        printi r1
+32 73:  55 36                       outs mess2
+33 75:  49 0                        printi r0
+34 77:  44 10                       outci #10
+35 79:  40                          ret
+36 80:                              
+37 80:                              ; fact finds the factorial of an integer
+38 80:                              ; r1 - number to find the factorial of
+39 80:                              ; r0 - return value - factorial of r1
+40 80:  6 1 2                       fact:  movrr r1 r2
+41 83:  5 1 3                       movir #1 r3
+42 86:  21 2 3                      for02: mulrr r2 r3
+43 89:  30 2 86                     rof02: sojnz r2 for02
+44 92:  6 3 0                       movrr r3 r0
+45 95:  40                          ret
+46 96:                              
+47 96:                              .end
+
+
+Symbols  Table
+0       mess
+18      mess1
+36      mess2
+43      begin
+69      outAns
+80      fact
+86      for02
+89      rof02
+Number of Assembly Errors: 0

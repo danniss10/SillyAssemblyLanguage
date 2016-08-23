@@ -1,0 +1,41 @@
+0 0:                                ;A simple test program in SAP
+1 0:                                
+2 0:                                .start Test
+3 0:  0                             Begin:		.Integer #0 ;Begin Printing Doubles
+4 1:  20                            End:		.Integer #20 ; End of doubles to print
+5 2:  10                            NewLine:	.Integer #10 ;Ascii for newline
+6 3:  26 65 32 80 114 111 103 114 9 IntroMess:	.String	 "A Program To Print Doubles"
+7 30:  12 32 68 111 117 98 108 101  DoubleMess:	.String " Doubled is "
+8 43:                               ;r0 will contain the NewLine character
+9 43:                               ;r8 will contain the integer to double
+10 43:                              ;r1 will contain the doubled integer
+11 43:                              ;r9 will contain the last number to double
+12 43:  8 0 8                       Test:   movmr Begin r8
+13 46:  8 1 9                       movmr End r9
+14 49:  8 2 0                       movmr NewLine r0
+15 52:  55 3                        outs IntroMess
+16 54:  45 0                        outcr r0
+17 56:                              
+18 56:  6 8 1                       Do01:	movrr r8 r1
+19 59:  13 8 1                      addrr r8 r1
+20 62:  49 8                        printi r8
+21 64:  55 30                       outs DoubleMess
+22 66:  49 1                        printi r1
+23 68:  45 0                        outcr r0
+24 70:  34 8 9                      cmprr r8 r9
+25 73:  12 1 8                      addir #1 r8
+26 76:  57 56                       jmpne Do01
+27 78:  0                           wh01:	halt
+28 79:                              .end
+
+
+Symbols  Table
+0       Begin
+1       End
+2       NewLine
+3       IntroMess
+30      DoubleMess
+43      Test
+56      Do01
+78      wh01
+Number of Assembly Errors: 0
